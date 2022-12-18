@@ -15,7 +15,7 @@ const fetchMyIP = function (callback) {
   });
 };
 
-const fetchCoordsByIp = function (ip, callback) {
+const fetchCoordsByIP = function (ip, callback) {
   request("http://ipwho.is/" + ip, (error, response, body) => {
     const latitude = JSON.parse(body).latitude;
     const longitude = JSON.parse(body).longitude;
@@ -54,7 +54,7 @@ const fetchISSFlyOverTimes = function (coords, callback) {
     }
   );
 };
-const nextISSTimesForMyLocation = function(callback) {
+const nextISSTimesForMyLocation = function (callback) {
   fetchMyIP((error, ip) => {
     if (error) {
       return callback(error, null);
@@ -74,6 +74,5 @@ const nextISSTimesForMyLocation = function(callback) {
       });
     });
   });
-
-    }
-module.exports = { fetchMyIP, fetchCoordsByIp, fetchISSFlyOverTimes };
+};
+module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation };
